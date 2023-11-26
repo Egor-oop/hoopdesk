@@ -23,7 +23,7 @@ services:
       - DB_PORT=${POSTGRES_PORT}
       - TIME_ZONE=${DJANGO_TIME_ZONE}
   db:
-    image: postgres
+    image: postgres:15
     volumes:
       - ./data/db:/var/lib/postgresql/data
     restart: always
