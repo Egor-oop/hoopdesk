@@ -18,7 +18,7 @@ sys.path.insert(0, path.join(BASE_DIR, 'apps'))
 SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(environ.get('DEBUG', default=1))
+DEBUG = bool(int(environ.get('DEBUG', default=1)))
 
 ALLOWED_HOSTS = str(environ.get('ALLOWED_HOSTS', default='*')).split(' ')
 
@@ -115,19 +115,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = str(environ.get('CORS_ALLOWED_ORIGINS', default='')).split()
+CORS_ALLOWED_ORIGINS = str(environ.get(
+    'CORS_ALLOWED_ORIGINS', default='')).split()
 
-CORS_ALLOW_ALL_ORIGINS = bool(environ.get('CORS_ALLOW_ALL_ORIGINS', default='0'))
+CORS_ALLOW_ALL_ORIGINS = bool(environ.get(
+    'CORS_ALLOW_ALL_ORIGINS', default='0'))
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
