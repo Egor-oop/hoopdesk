@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+RUN pip3 install gunicorn==21.2.0
+
+COPY entrypoint.sh /app/
+RUN chmod +x /app/entrypoint.sh
+
+COPY .. .
+
+EXPOSE 8000
+
+ENTRYPOINT [ "/app/entrypoint.sh" ]
+
+CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]

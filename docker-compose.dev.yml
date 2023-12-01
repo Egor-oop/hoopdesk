@@ -3,17 +3,15 @@ services:
   djangoserver:
     build:
       context: ./backend
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     ports:
       - '8000:8000'
     volumes:
       - ./backend:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
     depends_on:
       - db
     environment:
-      - DEBUG=0
+      - DEBUG=1 # 0 or 1
       - SECRET_KEY=${DJANGO_SECRET_KEY}
       - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
       - CORS_ALLOWED_ORIGINS=${DJANGO_CORS_ALLOWED_ORIGINS}
@@ -38,18 +36,3 @@ services:
     ports:
       - '${POSTGRES_PORT}:${POSTGRES_PORT}'
     command: -p ${POSTGRES_PORT}
-  nginx:
-    build: ./nginx
-    restart: always
-    ports:
-      - 80:80
-      - 433:433
-    volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
-    depends_on:
-      - djangoserver
-
-volumes:
-  static_volume:
-  media_volume:
