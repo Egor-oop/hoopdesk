@@ -8,6 +8,8 @@ done
 
 echo 'PostgreSQL started'
 
+sleep 2.5
+
 echo 'Running migrations...'
 python manage.py migrate
 
