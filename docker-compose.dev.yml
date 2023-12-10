@@ -22,6 +22,18 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD}
       - DB_PORT=${POSTGRES_PORT}
       - TIME_ZONE=${DJANGO_TIME_ZONE}
+  reactclient:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - 5173:5173
+    stdin_open: true
+    depends_on:
+      - djangoserver
   db:
     image: postgres:15
     volumes:
