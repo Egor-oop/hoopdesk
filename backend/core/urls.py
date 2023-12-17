@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView
 )
-from apps.accounts.views import UserRegisterAPIView, IsSetupAPIView
+from apps.accounts.views import UserRegisterAPIView, IsSetupAPIView, MeAPIView
 
 router = routers.DefaultRouter()
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/is-setup/', IsSetupAPIView.as_view()),
+    path('api/me/', MeAPIView.as_view()),
 
     # JWT
     path('api/register/', UserRegisterAPIView.as_view(), name='user_create'),
