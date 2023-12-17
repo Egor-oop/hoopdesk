@@ -23,6 +23,6 @@ const protectedRoutes: RouteObject[] = [
 ]
 
 export const getRouter = () => {
-  const user = 'asdf' // TODO: create useAuth()
+  const user = null // TODO: create useAuth()
   return createBrowserRouter(user ? protectedRoutes : publicRoutes)
 }
