@@ -3,8 +3,8 @@ import { FC, ReactNode } from 'react'
 type TAppButtonProps = {
   children: ReactNode
   type: 'submit' | 'reset' | 'button'
-  onSubmit?: () => {}
-  onClick?: () => {}
+  onSubmit?: () => void
+  onClick?: () => void
 }
 
 export const AppButton: FC<TAppButtonProps> = ({ children, type, onSubmit, onClick }) => {
