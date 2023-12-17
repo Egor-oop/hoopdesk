@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Suspense } from 'react'
+import { RouterProvider } from 'react-router-dom';
+
 import './App.css'
+import { getRouter } from './router/router.tsx';
 
 function App() {
   return (
-    <>
-      <h1 className="underline">
-        Hello world!
-      </h1>
-    </>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <RouterProvider router={getRouter()} />
+    </Suspense>
   )
 }
 
