@@ -2,9 +2,9 @@ import Axios from 'axios'
 import { API_URL } from '../config'
 import { storage } from '../utils'
 
-export const axios = Axios.create({ baseURL: API_URL })
+export const axiosApi = Axios.create({ baseURL: API_URL })
 
-axios.interceptors.request.use(
+axiosApi.interceptors.request.use(
   config => {
     const accessToken = storage.getToken().access
     config.headers.Authorization = `Bearer ${accessToken}`
