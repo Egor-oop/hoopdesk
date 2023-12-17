@@ -13,9 +13,9 @@ type TInputFieldProps = {
   ) => void
 }
 
-export const InputField: FC<TInputFieldProps> = ({ label, type, placeholder, isRequired, value, onChange }) => {
+export const InputField: FC<TInputFieldProps> = ({ label, type, placeholder, isRequired, name, value, onChange }) => {
   return (
-    <Form.Field className='mb-3 w-full' name='firstName'>
+    <Form.Field className='mb-3 w-full' name={name}>
       <Form.Label className=''>{label}</Form.Label>
       <Form.Control asChild>
         <input
