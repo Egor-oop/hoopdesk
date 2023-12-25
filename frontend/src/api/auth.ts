@@ -18,6 +18,7 @@ export const userRegisterApi = (
   firstName: string,
   lastName: string
 ) => {
+  // TODO: catch promise
   return axiosApi.post('/api/register/', {
     username: username,
     password: password,
@@ -29,5 +30,6 @@ export const userRegisterApi = (
 }
 
 export const userMeApi = () => {
+  // TODO: catch promise
   return axiosApi.get('/api/me/')
 }
