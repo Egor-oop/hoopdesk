@@ -1,5 +1,6 @@
-import { RouteObject, createBrowserRouter, Navigate } from "react-router-dom"
+import { RouteObject, createBrowserRouter, Navigate } from 'react-router-dom'
 import { Login, TaskList } from '../pages'
+import { useAuth } from '../lib'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -23,6 +24,6 @@ const protectedRoutes: RouteObject[] = [
 ]
 
 export const getRouter = () => {
-  const user = null // TODO: create useAuth()
+  const user = useAuth()
   return createBrowserRouter(user ? protectedRoutes : publicRoutes)
 }

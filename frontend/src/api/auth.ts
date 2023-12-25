@@ -1,16 +1,13 @@
 import { axiosApi } from "../lib"
 
-export const userLoginApi = (username: string, password: string) => {
-  axiosApi.post('/api/login/', {
+export const userLoginApi = async (username: string, password: string) => {
+  const req = await axiosApi.post('/api/login/', {
     username: username,
     password: password
+  }).catch(err => {
+    return err
   })
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.error(error)
-    })
+  return req
 }
 
 export const userRegisterApi = (
@@ -21,7 +18,7 @@ export const userRegisterApi = (
   firstName: string,
   lastName: string
 ) => {
-  axiosApi.post('/api/register/', {
+  return axiosApi.post('/api/register/', {
     username: username,
     password: password,
     password2: password2,
@@ -29,10 +26,8 @@ export const userRegisterApi = (
     first_name: firstName,
     last_name: lastName
   })
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.error(error)
-    })
+}
+
+export const userMeApi = () => {
+  return axiosApi.get('/api/me/')
 }

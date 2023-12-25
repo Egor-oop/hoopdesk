@@ -1,5 +1,6 @@
-import { userLoginApi } from './auth'
+import { userLoginApi, userMeApi } from './auth'
 
 export {
-  userLoginApi
+  userLoginApi,
+  userMeApi
 }

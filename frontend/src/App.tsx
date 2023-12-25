@@ -1,8 +1,7 @@
 import { Suspense } from 'react'
-import { RouterProvider } from 'react-router-dom';
-
+import { RouterProvider } from 'react-router-dom'
 import './App.css'
-import { getRouter } from './router/router.tsx';
+import { getRouter } from './router/router.tsx'
 
 function App() {
   return (
