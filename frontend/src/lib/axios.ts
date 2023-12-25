@@ -34,6 +34,9 @@ axiosApi.interceptors.response.use(
               return error
             })
         })
+        .catch(error => {
+          return error
+        })
     }
   }
 )
