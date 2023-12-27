@@ -16,27 +16,18 @@ axiosApi.interceptors.request.use(
 )
 
 axiosApi.interceptors.response.use(
-  response => response,
-  error => {
+  response => { return response },
+  async (error) => {
     const originalRequest = error.config
-    const refreshToken = storage.getToken().refresh
-
-    if (error.response.status === 401 && refreshToken) {
-      axiosApi.post('/api/token/refresh/')
-        .then(response => {
-          storage.setToken(response.data.access, response.data.refresh)
-          originalRequest.headers.Authorization = `Bearer ${response.data.access}`
-          axiosApi(originalRequest)
-            .then(response => {
-              return response.data
-            })
-            .catch(error => {
-              return error
-            })
-        })
-        .catch(error => {
-          return error
-        })
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+      const refreshToken = storage.getToken().refresh
+      const newTokens = await axiosApi.post('/api/token/refresh/', {refresh: refreshToken})
+      storage.setToken(newTokens.data.access, newTokens.data.refresh)
+      axiosApi.defaults.headers.common['Authorization'] = `Bearer ${newTokens.data.refresh}`
+      console.log(newTokens)
+      return axiosApi(originalRequest)
     }
+    return Promise.reject(error)
   }
 )

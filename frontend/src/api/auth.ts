@@ -30,6 +30,6 @@ export const userRegisterApi = (
 }
 
 export const userMeApi = () => {
-  // TODO: catch promise
-  return axiosApi.get('/api/me/')
+  const req = axiosApi.get('/api/me/')
+  return req
 }
