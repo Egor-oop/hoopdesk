@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 from apps.accounts.views import (
     RegisterSuperuserAPIView,
+    UserViewSet,
     UserRegisterAPIView,
     IsSetupAPIView,
     MeAPIView
@@ -15,8 +16,10 @@ from apps.accounts.views import (
 
 router = routers.DefaultRouter()
 
+router.register('users', UserViewSet)
+
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/is-setup/', IsSetupAPIView.as_view()),
