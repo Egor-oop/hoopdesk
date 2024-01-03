@@ -6,7 +6,11 @@ from rest_framework import status, mixins, viewsets
 
 from django.contrib.auth.models import User
 
-from .serializers import UserRegisterSerializer, UserSerializer
+from .serializers import (
+    UserRegisterSerializer,
+    UserSerializer,
+    RegisterSuperUserSerializer
+)
 from .permissions import IsCurrentUserOrReadOnly
 
 
@@ -28,8 +32,13 @@ class MeAPIView(APIView):
 
 
 class UserRegisterAPIView(CreateAPIView):
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
     serializer_class = UserRegisterSerializer
+
+
+class RegisterSuperuserAPIView(CreateAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSuperUserSerializer
 
 
 class IsSetupAPIView(APIView):
