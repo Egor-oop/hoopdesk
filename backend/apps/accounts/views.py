@@ -32,7 +32,7 @@ class MeAPIView(APIView):
 
 
 class UserRegisterAPIView(CreateAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsStaffUser,)
     serializer_class = UserRegisterSerializer
 
 
