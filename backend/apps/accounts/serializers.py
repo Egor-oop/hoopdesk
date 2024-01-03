@@ -13,6 +13,16 @@ class UserSerializer(serializers.ModelSerializer):
         }
         read_only_fields = ('username',)
 
+    def update(self, instance, validated_data):
+        if self.context['request'].user.is_staff:
+            setattr(instance, 'is_active', validated_data.get('is_active', instance.is_active))
+            setattr(instance, 'is_staff', validated_data.get('is_staff', instance.is_staff))
+        else:
+            setattr(instance, 'first_name', validated_data.get('first_name', instance.first_name))
+            setattr(instance, 'last_name', validated_data.get('last_name', instance.last_name))
+            setattr(instance, 'email', validated_data.get('email', instance.email))
+        return instance
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(

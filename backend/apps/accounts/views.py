@@ -11,16 +11,16 @@ from .serializers import (
     UserSerializer,
     RegisterSuperUserSerializer
 )
-from .permissions import IsCurrentUserOrReadOnly
+from .permissions import IsStaffUser, IsCurrentUserOrReadOnly
 
 
-class AccountViewSet(mixins.RetrieveModelMixin,
-                     mixins.UpdateModelMixin,
-                     mixins.ListModelMixin,
-                     viewsets.GenericViewSet):
+class UserViewSet(mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.ListModelMixin,
+                  viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsCurrentUserOrReadOnly,)
+    permission_classes = (IsStaffUser | IsCurrentUserOrReadOnly,)
 
 
 class MeAPIView(APIView):
