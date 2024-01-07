@@ -22,6 +22,10 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD}
       - DB_PORT=${POSTGRES_PORT}
       - TIME_ZONE=${DJANGO_TIME_ZONE}
+      - EMAIL_HOST=${DJANGO_EMAIL_HOST}
+      - EMAIL_HOST_USER=${DJANGO_EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${DJANGO_EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=${DJANGO_EMAIL_PORT}
   reactclient:
     build: 
       context: ./frontend
