@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 
     # created apps
     'apps.accounts',
+    'apps.clients',
+    'apps.tickets',
 ]
 
 MIDDLEWARE = [
