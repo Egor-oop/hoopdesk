@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter, Navigate } from 'react-router-dom'
-import { Login, TaskList } from '../pages'
+import { Login, Profile, TaskList, Clients, Settings } from '../pages'
 import { useAuth } from '../lib'
+import App from '../App'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -15,7 +16,29 @@ const publicRoutes: RouteObject[] = [
 const protectedRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <TaskList />
+    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <TaskList />
+      },
+      {
+        path: '/tickets',
+        element: <TaskList />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/clients',
+        element: <Clients />
+      },
+      {
+        path: '/settings',
+        element: <Settings />
+      },
+    ]
   },
   {
     path: '*',

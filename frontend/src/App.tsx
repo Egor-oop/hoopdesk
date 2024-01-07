@@ -1,13 +1,17 @@
-import { Suspense } from 'react'
-import { RouterProvider } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import './App.css'
-import { getRouter } from './router/router.tsx'
+import { Sidebar } from './components'
 
 function App() {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <RouterProvider router={getRouter()} />
-    </Suspense>
+    <div className='text-slate-950'>
+      <Sidebar />
+      <main className='p-3 ml-64'>
+        <div className='mx-auto w-auto block'>
+          <Outlet />
+        </div>
+      </main>
+    </div>
   )
 }
 
