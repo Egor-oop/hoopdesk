@@ -13,10 +13,18 @@ from apps.accounts.views import (
     IsSetupAPIView,
     MeAPIView
 )
+from apps.clients.views import (
+    OrganizationViewSet,
+    ClientViewSet
+)
+from apps.tickets.views import TicketViewSet
 
 router = routers.DefaultRouter()
 
 router.register('users', UserViewSet)
+router.register('organizations', OrganizationViewSet)
+router.register('clients', ClientViewSet)
+router.register('tickets', TicketViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
