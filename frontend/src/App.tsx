@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
-import { Flex } from '@radix-ui/themes'
 import { Sidebar } from './components'
 
 function App() {

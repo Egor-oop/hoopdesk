@@ -23,7 +23,7 @@ export const Sidebar = () => {
   }, [])
 
   return (
-    <Box className='flex flex-col flex-shrink-0 flex-grow-0 w-64 p-3 gap-4 fixed'>
+    <Box className='flex flex-col flex-shrink-0 flex-grow-0 w-64 p-3 gap-4 bg-white fixed'>
       <SidebarProfile
         username={userData?.username}
         firstName={userData?.first_name}
@@ -31,7 +31,7 @@ export const Sidebar = () => {
       />
       <Box className='flex flex-col gap-2'>
         {links.map(link => (
-          <SidebarLink name={link.name} href={link.href} />
+          <SidebarLink key={link.name} name={link.name} href={link.href} />
         ))}
       </Box>
     </Box>

@@ -1,7 +1,8 @@
 import { axiosApi } from './axios'
-import { useAuth } from './auth'
+import { useAuth, decodeToken } from './auth'
 
 export {
   axiosApi,
   useAuth,
+  decodeToken
 }
