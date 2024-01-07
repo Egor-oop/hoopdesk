@@ -10,7 +10,8 @@ type TAppButtonProps = {
 export const AppButton: FC<TAppButtonProps> = ({ children, type, onSubmit, onClick }) => {
   return (
     <button
-      className='bg-indigo-700 text-slate-50 px-5 py-3 rounded-lg text-sm font-medium hover:bg-indigo-600 active:bg-indigo-800 hover:cursor-pointer'
+      className='bg-gray-900 text-slate-50 px-5 py-3 rounded-sm text-sm font-medium
+      hover:bg-gray-800 active:bg-gray-950 hover:cursor-pointer'
       onSubmit={onSubmit}
       onClick={onClick}
       type={type || 'button'}>

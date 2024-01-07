@@ -15,7 +15,7 @@ export const SidebarProfile: FC<TSidebarProfileProps> = ({
   return (
     <div>
       <Link
-        className='block px-3 py-2 rounded-t-md font-medium hover:bg-gray-100'
+        className='block px-2 py-1 rounded-t-sm font-medium hover:bg-gray-100'
         to='/profile'
       >
         {/* <Avatar fallback={`${firstName.charAt(0)}${lastName.charAt(0)}`} /> */}

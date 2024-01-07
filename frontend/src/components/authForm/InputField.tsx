@@ -13,13 +13,22 @@ type TInputFieldProps = {
   ) => void
 }
 
-export const InputField: FC<TInputFieldProps> = ({ label, type, placeholder, isRequired, name, value, onChange }) => {
+export const InputField: FC<TInputFieldProps> = ({
+  label,
+  type,
+  placeholder,
+  isRequired,
+  name,
+  value,
+  onChange
+}) => {
   return (
     <Form.Field className='mb-3 w-full' name={name}>
       <Form.Label className=''>{label}</Form.Label>
       <Form.Control asChild>
         <input
-          className='border border-neutral py-2 px-2.5 w-full block rounded-lg focus:outline-none focus:border-slate-300'
+          className='border border-zinc-300 py-2 px-2.5 w-full block rounded-sm
+         placeholder:text-zinc-300 focus:outline-none focus:border-slate-300'
           type={type}
           placeholder={placeholder}
           required={isRequired}

@@ -23,13 +23,13 @@ export const Sidebar = () => {
   }, [])
 
   return (
-    <Box className='flex flex-col flex-shrink-0 flex-grow-0 w-64 p-3 gap-4 bg-white fixed'>
+    <Box className='flex flex-col flex-shrink-0 flex-grow-0 w-64 p-3 gap-2 bg-white fixed'>
       <SidebarProfile
         username={userData?.username}
         firstName={userData?.first_name}
         lastName={userData?.last_name}
       />
-      <Box className='flex flex-col gap-2'>
+      <Box className='flex flex-col'>
         {links.map(link => (
           <SidebarLink key={link.name} name={link.name} href={link.href} />
         ))}
