@@ -26,6 +26,8 @@ services:
       - EMAIL_HOST_USER=${DJANGO_EMAIL_HOST_USER}
       - EMAIL_HOST_PASSWORD=${DJANGO_EMAIL_HOST_PASSWORD}
       - EMAIL_PORT=${DJANGO_EMAIL_PORT}
+      - CELERY_BROKER_URL=${DJANGO_CELERY_BROKER_URL}
+      - CELERY_RESULT_BACKEND=${DJANGO_CELERY_RESULT_BACKEND}
   reactclient:
     build: 
       context: ./frontend
@@ -52,3 +54,34 @@ services:
     ports:
       - '${POSTGRES_PORT}:${POSTGRES_PORT}'
     command: -p ${POSTGRES_PORT}
+  redis:
+    image: redis:7.2.4-alpine
+  worker:
+    build:
+      context: ./backend
+    environment:
+      - DEBUG=1 # 0 or 1
+      - SECRET_KEY=${DJANGO_SECRET_KEY}
+      - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - CORS_ALLOWED_ORIGINS=${DJANGO_CORS_ALLOWED_ORIGINS}
+      - CORS_ALLOW_ALL_ORIGINS=${DJANGO_CORS_ALLOW_ALL_ORIGINS}
+      - DB_HOST=db
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_PORT=${POSTGRES_PORT}
+      - TIME_ZONE=${DJANGO_TIME_ZONE}
+      - EMAIL_HOST=${DJANGO_EMAIL_HOST}
+      - EMAIL_HOST_USER=${DJANGO_EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${DJANGO_EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=${DJANGO_EMAIL_PORT}
+      - CELERY_BROKER_URL=${DJANGO_CELERY_BROKER_URL}
+      - CELERY_RESULT_BACKEND=${DJANGO_CELERY_RESULT_BACKEND}
+    entrypoint: celery
+    command: -A celery_app.app worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    links:
+      - redis
+    depends_on:
+      - redis
