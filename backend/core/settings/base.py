@@ -2,7 +2,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from os import environ, path
 from datetime import timedelta
-
 import sys
 
 load_dotenv()
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.clients',
     'apps.tickets',
+    'apps.messagesapp',
 ]
 
 MIDDLEWARE = [
@@ -183,5 +183,13 @@ EMAIL_PORT = environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-CELERY_BROKER_URL=environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
-CELERY_RESULT_BACKEND=environ.get('CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
+CELERY_BROKER_URL = environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = environ.get('CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
+CELERY_IMPORTS = ('apps.messagesapp.tasks',)
+
+CELERY_BEAT_SCHEDULE = {
+    'check_new_emails': {
+        'task': 'apps.messagesapp.tasks.check_emails',
+        'schedule': 10.0
+    }
+}
