@@ -5,7 +5,6 @@ from apps.clients.models import Client
 from apps.tickets.models import Ticket
 
 
-
 class MailMessage(models.Model):
     from_client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True)
     from_employee = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
