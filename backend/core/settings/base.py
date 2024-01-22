@@ -2,7 +2,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from os import environ, path
 from datetime import timedelta
-
 import sys
 
 load_dotenv()
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.clients',
     'apps.tickets',
+    'apps.messagesapp',
 ]
 
 MIDDLEWARE = [
@@ -173,4 +173,23 @@ SIMPLE_JWT = {
     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = environ.get('EMAIL_PORT')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+CELERY_BROKER_URL = environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = environ.get('CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
+CELERY_IMPORTS = ('apps.messagesapp.tasks',)
+
+CELERY_BEAT_SCHEDULE = {
+    'check_new_emails': {
+        'task': 'apps.messagesapp.tasks.check_emails',
+        'schedule': 10.0
+    }
 }
