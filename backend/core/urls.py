@@ -18,6 +18,7 @@ from apps.clients.views import (
     ClientViewSet
 )
 from apps.tickets.views import TicketViewSet
+from apps.messagesapp.views import SendMessageAPIView
 
 router = routers.DefaultRouter()
 
@@ -34,6 +35,7 @@ urlpatterns = [
     path('api/me/', MeAPIView.as_view()),
     path('api/register/', UserRegisterAPIView.as_view(), name='user_create'),
     path('api/registersuperuser/', RegisterSuperuserAPIView.as_view(), name='superuser_create'),
+    path('api/send-message/', SendMessageAPIView.as_view()),
 
     # JWT
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
