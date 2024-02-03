@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 type TTableProps = {
-  data: {}[]
+  data: TClient[] | TOrganization[] | {}[]
   variant: 'organizations' | 'clients'
 }
 
