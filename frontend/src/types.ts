@@ -7,3 +7,17 @@ type TUserData = {
   is_staff: boolean
   is_active: boolean
 }
+
+type TClient = {
+  id: number
+  full_name: string
+  email: string
+  organization: null | string | number
+}
+
+type TOrganization = {
+  id: number
+  name: string
+  website: string
+  email: string
+}
