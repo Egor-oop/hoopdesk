@@ -9,16 +9,16 @@ export const Table: FC<TTableProps> = ({ data, variant }) => {
   const getTableHeaders = () => {
     // const firstRowKeys = Object.keys(data[0]);
     return (
-      <>
+      <tr>
         {variant === 'organizations'
           ? ['ID', 'Имя', 'Сайт', 'Эл. почта'].map((key) => (
-            <th className='p-2 font-semibold' key={key}>{key}</th>
+            <td className='p-2 font-semibold' key={key}>{key}</td>
           ))
           : ['ID', 'Имя', 'Эл. почта', 'Организация'].map((key) => (
-            <th className='p-2 font-semibold' key={key}>{key}</th>
+            <td className='p-2 font-semibold' key={key}>{key}</td>
           ))
         }
-      </>
+      </tr>
     );
   };
 
