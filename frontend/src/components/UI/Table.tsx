@@ -1,13 +1,14 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 type TTableProps = {
-  data: TClient[] | TOrganization[] | {}[]
+  data: TClient[] | TOrganization[]
   variant: 'organizations' | 'clients'
 }
 
 export const Table: FC<TTableProps> = ({ data, variant }) => {
+  const navigate = useNavigate()
   const getTableHeaders = () => {
-    // const firstRowKeys = Object.keys(data[0]);
     return (
       <tr>
         {variant === 'organizations'
@@ -23,13 +24,16 @@ export const Table: FC<TTableProps> = ({ data, variant }) => {
   };
 
   const getTableCells = () => {
-    return data.map((row, index) => (
-      <tr className='border-y border-gray-200' key={index}>
-        {Object.values(row).map((value, index) => (
-          <td className='p-2' key={index}>
-            {typeof value === 'object' ? JSON.stringify(value) : String(value)}
-          </td>
-        ))}
+    return data.map((el) => (
+      <tr
+        className='border-y border-gray-200 hover:bg-gray-50 hover:cursor-pointer'
+        onClick={variant === 'organizations' ? () => {navigate(0)} : () => {navigate(`/clients/${el.id}`)}}
+        key={el.id}>
+          {Object.values(el).map((value, index) => (
+            <td className='p-2' key={index}>
+              {typeof value === 'object' ? JSON.stringify(value) && 'нет' : String(value)}
+            </td>
+          ))}
       </tr>
     ));
   };
