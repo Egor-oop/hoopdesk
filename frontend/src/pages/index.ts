@@ -6,6 +6,7 @@ import { ClientDetails } from "./clients/ClientDetails"
 import { Profile } from "./Profile"
 import { Settings } from "./Settings"
 import { Organizations } from "./organizations/Organizations"
+import { OrganizationDetails } from "./organizations/OrganizationDetails"
 
 export {
   Signup,
@@ -15,5 +16,6 @@ export {
   Clients,
   Settings,
   ClientDetails,
-  Organizations
+  Organizations,
+  OrganizationDetails
 }
