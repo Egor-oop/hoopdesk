@@ -3,19 +3,14 @@ import { Table } from '../../components'
 import { getOrganizationsApi } from '../../api'
 
 export const Organizations = () => {
-  const [organizations, setOrganizations] = useState<TOrganization[]>([{
-    id: 0,
-    name: 'string',
-    website: 'string | number | null',
-    email: 'string'
-  }])
+  const [organizations, setOrganizations] = useState<TOrganization[] | null>(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     getOrganizationsApi()
       .then(res => {
-        setOrganizations(res.data)
+        if (res.data[0]) setOrganizations(res.data)
       })
       .catch(err => err)
     setLoading(false)
@@ -25,9 +20,9 @@ export const Organizations = () => {
     <div>
       {loading ? 'Загрузка' :
         <>
-          {organizations[0].id === 0
-            ? <p>Организаций не существует</p>
-            : <Table data={organizations} variant='organizations' />}
+          {organizations
+            ? <Table data={organizations} variant='organizations' />
+            : <p>Организаций не существует</p>}
         </>
       }
     </div>

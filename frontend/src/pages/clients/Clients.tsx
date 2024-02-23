@@ -26,6 +26,7 @@ export const Clients = () => {
       {loading ? 'Загрузка' :
         <>
           {clients[0].id === 0
+          //TODO remake this like in Organizations.tsx
             ? <p>Пользователей не существует</p>
             : <Table data={clients} variant='clients' />}
         </>
