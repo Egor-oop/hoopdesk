@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Table } from '../../components'
+import { AppButton, Table } from '../../components'
 import { getOrganizationsApi } from '../../api'
+import { useNavigate } from 'react-router-dom'
 
 export const Organizations = () => {
   const [organizations, setOrganizations] = useState<TOrganization[] | null>(null)
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -18,6 +20,9 @@ export const Organizations = () => {
 
   return (
     <div>
+      <AppButton type='button' onClick={() => navigate('new')}>
+        Добавить
+      </AppButton>
       {loading ? 'Загрузка' :
         <>
           {organizations

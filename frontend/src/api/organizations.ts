@@ -10,6 +10,18 @@ export const getOrganizationApi = async (id: string | number) => {
   return req
 }
 
+export const createOrganizationApi = async (
+  name: string,
+  website: string,
+  email: string
+) => {
+  const req = await axiosApi.post(
+    '/api/organizations/',
+    {name, website, email}
+  )
+  return req
+}
+
 export const editOrganizationApi = async (
   id: string | number,
   name: string,
@@ -18,7 +30,7 @@ export const editOrganizationApi = async (
 ) => {
   const req = await axiosApi.put(
     `/api/organizations/${id}/`,
-    {name, website, email}
+    { name, website, email }
   )
   return req
 }

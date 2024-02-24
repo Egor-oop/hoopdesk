@@ -4,6 +4,7 @@ import { getClientsApi, getClientApi } from './clients'
 import {
   getOrganizationsApi,
   getOrganizationApi,
+  createOrganizationApi,
   editOrganizationApi,
   deleteOrganizationApi
 } from './organizations'
@@ -16,6 +17,7 @@ export {
   getClientApi,
   getOrganizationsApi,
   getOrganizationApi,
+  createOrganizationApi,
   editOrganizationApi,
   deleteOrganizationApi
 }
