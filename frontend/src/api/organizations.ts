@@ -22,3 +22,8 @@ export const editOrganizationApi = async (
   )
   return req
 }
+
+export const deleteOrganizationApi = async (id: string | number) => {
+  const req = await axiosApi.delete(`/api/organizations/${id}/`)
+  return req
+}

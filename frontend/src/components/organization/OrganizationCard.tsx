@@ -3,7 +3,7 @@ import * as Form from '@radix-ui/react-form'
 
 import { InputField } from '../UI/InputField'
 import { AppButton } from '..'
-import { editOrganizationApi } from '../../api'
+import { deleteOrganizationApi, editOrganizationApi } from '../../api'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -42,9 +42,19 @@ export const OrganizationCard: FC<TOrganizationCard> = ({
       navigate(0)
     }
   }
+
+  const deleteOrganization = async () => {
+    const res = await deleteOrganizationApi(id)
+    if (res instanceof AxiosError) {
+      setError(res)
+    } else {
+      navigate('/organizations')
+    }
+  }
+
   return (
     <div className='w-[36rem]'>
-      <Form.Root onSubmit={e => {updateOrganization(e)}}>
+      <Form.Root onSubmit={e => { updateOrganization(e) }}>
         <div className='flex flex-col gap-1 mb-3'>
           <Form.Field name='name'>
             <InputField
@@ -73,9 +83,14 @@ export const OrganizationCard: FC<TOrganizationCard> = ({
               variant='invisible-standart' />
           </Form.Field>
         </div>
-        <AppButton type='submit'>
-          Сохранить
-        </AppButton>
+        <div className='flex gap-1'>
+          <AppButton type='submit'>
+            Сохранить
+          </AppButton>
+          <AppButton type='button' onClick={deleteOrganization} variant='secondary'>
+            Удалить
+          </AppButton>
+        </div>
       </Form.Root>
     </div>
   )

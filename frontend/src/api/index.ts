@@ -1,7 +1,12 @@
 import { userLoginApi, userMeApi } from './auth'
 import { getUserInfoApi } from './profile'
 import { getClientsApi, getClientApi } from './clients'
-import { getOrganizationsApi, getOrganizationApi, editOrganizationApi } from './organizations'
+import {
+  getOrganizationsApi,
+  getOrganizationApi,
+  editOrganizationApi,
+  deleteOrganizationApi
+} from './organizations'
 
 export {
   userLoginApi,
@@ -11,5 +16,6 @@ export {
   getClientApi,
   getOrganizationsApi,
   getOrganizationApi,
-  editOrganizationApi
+  editOrganizationApi,
+  deleteOrganizationApi
 }
