@@ -21,3 +21,8 @@ type TOrganization = {
   website: string
   email: string
 }
+
+type TSelectOption = {
+  label: string
+  value: string | number | null
+}
