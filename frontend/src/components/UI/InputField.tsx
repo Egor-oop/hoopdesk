@@ -34,7 +34,7 @@ export const InputField: FC<TInputFieldProps> = ({
       // Invisible 2xl
       `${variant === 'invisible-2xl' ? 'py-1.5 px-1.5 focus:border-zinc-300 focus:border-b text-2xl font-medium ' : ''}` +
       // Is disabled
-      `${disabled ? 'hover:cursor-not-allowed' : ''}`}
+      `${disabled ? 'bg-white hover:cursor-not-allowed' : ''}`}
       type={type}
       disabled={disabled ?? false}
       placeholder={placeholder}
