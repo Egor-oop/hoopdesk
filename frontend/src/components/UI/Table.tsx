@@ -35,7 +35,7 @@ export const Table: FC<TTableProps> = ({ data, variant }) => {
         key={el.id}>
           {Object.values(el).map((value, index) => (
             <td className='p-2' key={index}>
-              {typeof value === 'object' ? JSON.stringify(value) && 'нет' : String(value)}
+              {value || '-'}
             </td>
           ))}
       </tr>
