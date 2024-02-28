@@ -10,5 +10,5 @@ class Organization(models.Model):
 class Client(models.Model):
     full_name = models.CharField(max_length=128, null=True, blank=True)
     email = models.EmailField(null=False, blank=False)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE,
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL,
                                      null=True, blank=True)
