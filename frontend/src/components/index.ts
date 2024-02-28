@@ -5,9 +5,10 @@ import { SignupForm } from './authForm/SignupForm'
 import { LoginForm } from './authForm/LoginForm'
 import { Sidebar } from './UI/sidebar/Sidebar'
 import { InputField } from './UI/InputField'
-import { ClientCard } from './UI/ClientCard'
+import { ClientCard } from './client/ClientCard'
 import { Avatar } from './UI/Avatar'
 import { Table } from './UI/Table'
+import { SelectField } from './UI/SelectField'
 
 export {
   OrganizationCard,
@@ -19,5 +20,6 @@ export {
   AppButton,
   Sidebar,
   Avatar,
-  Table
+  Table,
+  SelectField
 }

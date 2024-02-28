@@ -3,6 +3,7 @@ import { Login } from "./auth/Login"
 import { TaskList } from "./tasks/TaskList"
 import { Clients } from "./clients/Clients"
 import { ClientDetails } from "./clients/ClientDetails"
+import { ClientCreate } from "./clients/ClientCreate"
 import { Profile } from "./Profile"
 import { Settings } from "./Settings"
 import { Organizations } from "./organizations/Organizations"
@@ -17,6 +18,7 @@ export {
   Clients,
   Settings,
   ClientDetails,
+  ClientCreate,
   Organizations,
   OrganizationDetails,
   OrganizationCreate

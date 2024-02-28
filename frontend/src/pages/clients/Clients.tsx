@@ -3,19 +3,14 @@ import { Table } from '../../components'
 import { getClientsApi } from '../../api'
 
 export const Clients = () => {
-  const [clients, setClients] = useState<TClient[]>([{
-    id: 0,
-    full_name: 'string',
-    email: 'string',
-    organization: 'string | number | null'
-  }])
+  const [clients, setClients] = useState<TClient[] | null>(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true)
     getClientsApi()
       .then(res => {
-        setClients(res.data)
+        if (res.data[0]) setClients(res.data)
       })
       .catch(err => err)
     setLoading(false)
@@ -25,10 +20,9 @@ export const Clients = () => {
     <div>
       {loading ? 'Загрузка' :
         <>
-          {clients[0].id === 0
-          //TODO remake this like in Organizations.tsx
-            ? <p>Пользователей не существует</p>
-            : <Table data={clients} variant='clients' />}
+          {clients
+            ? <Table data={clients} variant='clients' />
+            : <p>Пользователей не существует</p>}
         </>
       }
     </div>
