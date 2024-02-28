@@ -1,5 +1,16 @@
 import { RouteObject, createBrowserRouter, Navigate } from 'react-router-dom'
-import { Login, Profile, TaskList, Clients, Settings } from '../pages'
+import {
+  Login,
+  Profile,
+  TaskList,
+  Clients,
+  Settings,
+  ClientDetails,
+  Organizations,
+  OrganizationDetails,
+  OrganizationCreate,
+  ClientCreate
+} from '../pages'
 import { useAuth } from '../lib'
 import App from '../App'
 
@@ -32,7 +43,27 @@ const protectedRoutes: RouteObject[] = [
       },
       {
         path: '/clients',
-        element: <Clients />
+        element: <Clients />,
+      },
+      {
+        path: '/clients/:id',
+        element: <ClientDetails />
+      },
+      {
+        path: '/clients/new',
+        element: <ClientCreate />
+      },
+      {
+        path: '/organizations',
+        element: <Organizations />,
+      },
+      {
+        path: '/organizations/:id',
+        element: <OrganizationDetails />
+      },
+      {
+        path: '/organizations/new',
+        element: <OrganizationCreate />
       },
       {
         path: '/settings',

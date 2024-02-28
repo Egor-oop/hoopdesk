@@ -11,6 +11,7 @@ export const Sidebar = () => {
     { name: 'Панель управления', href: '/' },
     { name: 'Задачи', href: '/tickets' },
     { name: 'Клиенты', href: '/clients' },
+    { name: 'Организации', href: '/organizations' },
     { name: 'Настройки', href: '/settings' },
   ]
 

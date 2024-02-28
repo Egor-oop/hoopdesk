@@ -8,7 +8,7 @@ type TSidebarLinkProps = {
 
 export const SidebarLink: FC<TSidebarLinkProps> = ({ name, href }) => {
   return (
-    <Link className='block px-2 py-1 rounded-sm font-medium hover:bg-gray-100' to={href}>
+    <Link className='block px-2 py-2 rounded-sm font-medium hover:bg-gray-100' to={href}>
       {name}
     </Link>
   )
