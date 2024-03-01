@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 
-from .serializers import OrganizationSerializer, ClientSerializer
+from .serializers import OrganizationSerializer, ClientSerializer, ClientSerializerOrganizationName
 from .models import Organization, Client
 
 
@@ -12,3 +12,10 @@ class OrganizationViewSet(ModelViewSet):
 class ClientViewSet(ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+
+    def get_serializer_class(self):
+        serializer = super().get_serializer_class()
+        if self.request.query_params.get('orgname') == 'true':
+            serializer = ClientSerializerOrganizationName
+        return serializer
+

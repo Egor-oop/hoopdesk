@@ -8,7 +8,7 @@ export const Clients = () => {
 
   useEffect(() => {
     setLoading(true)
-    getClientsApi()
+    getClientsApi(true)
       .then(res => {
         if (res.data[0]) setClients(res.data)
       })
