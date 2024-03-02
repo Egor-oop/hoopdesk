@@ -132,7 +132,8 @@ CORS_ALLOW_ALL_ORIGINS = bool(environ.get(
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'PAGE_SIZE': 15
 }
 
 SIMPLE_JWT = {
