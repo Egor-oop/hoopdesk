@@ -1,7 +1,7 @@
 import { axiosApi } from "../lib"
 
-export const getClientsApi = async () => {
-  const req = axiosApi.get('/api/clients/')
+export const getClientsApi = async (orgName: boolean = false) => {
+  const req = axiosApi.get(`/api/clients?orgname=${orgName}`)
   return req
 }
 
