@@ -17,7 +17,6 @@ class ClientViewSet(ModelViewSet):
     filter_backends = (OrderingFilter,)
 
     def get_serializer_class(self):
-        serializer = super().get_serializer_class()
-        if self.request.query_params.get('orgname') == 'true':
-            serializer = ClientSerializerOrganizationName
-        return serializer
+        if 'orgname' in self.request.query_params:
+            return ClientSerializerOrganizationName
+        return super().get_serializer_class()
