@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import OrderingFilter
-from rest_framework.pagination import PageNumberPagination, BasePagination
+from rest_framework.pagination import PageNumberPagination
 
 from .serializers import OrganizationSerializer, ClientSerializer, ClientSerializerOrganizationName
 from .models import Organization, Client
