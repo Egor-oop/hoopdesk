@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppButton, Pagination, Table } from '../../components'
+import { AppButton, OrganizationTable, Pagination} from '../../components'
 import { getOrganizationsApi } from '../../api'
 import { useNavigate } from 'react-router-dom'
 
@@ -29,7 +29,7 @@ export const Organizations = () => {
         <>
           {organizations
             ? <>
-              <Table data={organizations} variant='organizations' />
+              <OrganizationTable organizations={organizations} />
               <div className='flex justify-between items-end'>
                 <Pagination
                   length={count}

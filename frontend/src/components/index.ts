@@ -7,21 +7,27 @@ import { Sidebar } from './UI/sidebar/Sidebar'
 import { InputField } from './UI/InputField'
 import { ClientCard } from './client/ClientCard'
 import { Avatar } from './UI/Avatar'
-import { Table } from './UI/Table'
 import { SelectField } from './UI/SelectField'
 import { Pagination } from './UI/Pagination'
+import { ClientTable } from './client/ClientTable'
+import { OrganizationTable } from './organization/OrganizationTable'
 
 export {
+  // Organization
   OrganizationCard,
+  OrganizationTable,
+  // Client
+  ClientCard,
+  ClientTable,
+  // Auth
   AuthWrapper,
   SignupForm,
-  InputField,
-  ClientCard,
   LoginForm,
+  // UI
   AppButton,
   Sidebar,
   Avatar,
-  Table,
   SelectField,
-  Pagination
+  InputField,
+  Pagination,
 }

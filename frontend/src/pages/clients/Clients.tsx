@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppButton, Pagination, Table } from '../../components'
+import { AppButton, ClientTable, Pagination } from '../../components'
 import { getClientsApi } from '../../api'
 import { useNavigate } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ export const Clients = () => {
         <>
           {clients
             ? <>
-              <Table data={clients} variant='clients' />
+              <ClientTable clients={clients} />
               <div className='flex justify-between items-end'>
                 <Pagination
                   length={count}
