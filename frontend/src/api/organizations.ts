@@ -5,7 +5,7 @@ export const getOrganizationsApi = async (
   page: number = 1
 ) => {
   const req = await axiosApi.get(
-    `/api/organizations/?page=${page}&${nopage ? 'nopage' : ''}&ordering=-updated_at/`
+    `/api/organizations/?page=${page}${nopage ? '&nopage' : ''}&ordering=-updated_at/`
     )
   return req
 }
