@@ -9,6 +9,7 @@ import { ClientCard } from './client/ClientCard'
 import { Avatar } from './UI/Avatar'
 import { Table } from './UI/Table'
 import { SelectField } from './UI/SelectField'
+import { Pagination } from './UI/Pagination'
 
 export {
   OrganizationCard,
@@ -21,5 +22,6 @@ export {
   Sidebar,
   Avatar,
   Table,
-  SelectField
+  SelectField,
+  Pagination
 }

@@ -19,7 +19,7 @@ export const ClientCreate = () => {
   useEffect(() => {
     getOrganizationsApi()
       .then(res => {
-        setOrganizations(res.data)
+        if (res.data.results[0]) setOrganizations(res.data.results)
       })
       .catch(err => err)
   }, [])
@@ -34,7 +34,6 @@ export const ClientCreate = () => {
 
   const createClient = async (e: React.FormEvent) => {
     e.preventDefault()
-    debugger
     const res = await createClientApi(fullname, email, clientOrg)
     if (res instanceof AxiosError) {
       setError(res)

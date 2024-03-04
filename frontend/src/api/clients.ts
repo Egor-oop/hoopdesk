@@ -1,7 +1,10 @@
 import { axiosApi } from "../lib"
 
-export const getClientsApi = async (orgName: boolean = false) => {
-  const req = axiosApi.get(`/api/clients?orgname=${orgName}`)
+export const getClientsApi = async (
+  page: number,
+  orgName: boolean = false
+) => {
+  const req = axiosApi.get(`/api/clients/?page=${page}&ordering=-updated_at&orgname=${orgName}/`)
   return req
 }
 
