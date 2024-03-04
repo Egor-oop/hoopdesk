@@ -29,7 +29,7 @@ export const ClientCard: FC<TClientCardProps> = ({ id, fullname, email, organiza
   useEffect(() => {
     getOrganizationsApi()
       .then(res => {
-        setOrganizations(res.data)
+        if (res.data.results[0]) setOrganizations(res.data.results)
       })
       .catch(err => err)
   }, [])

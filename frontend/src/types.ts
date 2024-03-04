@@ -12,7 +12,8 @@ type TClient = {
   id: number
   full_name: string
   email: string
-  organization: null | string | number
+  organization?: null | string | number
+  organization_name?: string
 }
 
 type TOrganization = {

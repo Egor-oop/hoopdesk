@@ -18,7 +18,7 @@ class ClientSerializer(ModelSerializer):
 class ClientSerializerOrganizationName(ModelSerializer):
     class Meta:
         model = Client
-        fields = ('id', 'full_name', 'email')
+        fields = ('id', 'full_name', 'email', 'updated_at')
 
     def to_representation(self, instance):
         response = super().to_representation(instance)
