@@ -26,8 +26,8 @@ export const OrganizationTable: FC<TOrganizationTable> = ({ organizations }) => 
           >
             <td className='p-2'>{client.id || '-'}</td>
             <td className='p-2'>{client.name || '-'}</td>
-            <td className='p-2'>{client.email || '-'}</td>
             <td className='p-2'>{client.website || '-'}</td>
+            <td className='p-2'>{client.email || '-'}</td>
           </tr>
         ))}
       </tbody>
