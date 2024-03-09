@@ -26,9 +26,11 @@ def create_mail_message(ticket: Ticket, from_client: Client, content: str):
 
 
 def get_or_create_client(full_name, email):
-    client, is_created = Client.objects.get_or_create(
-        full_name=full_name, email=email)
-    return client
+    if not Client.objects.filter(email=email).exists():
+        client = Client(full_name=full_name, email=email)
+        client.save()
+        return client
+    return Client.objects.get(email=email)
 
 
 def get_or_create_ticket(title, client):
