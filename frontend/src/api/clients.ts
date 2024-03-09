@@ -27,12 +27,13 @@ export const createClientApi = async (
 
 export const editClientApi = async (
   id: string | number,
+  full_name: string,
   email: string,
   organization: number | null
 ) => {
   const req = await axiosApi.put(
     `/api/clients/${id}/`,
-    { email, organization }
+    { full_name, email, organization }
   )
   return req
 }

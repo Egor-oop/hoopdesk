@@ -13,6 +13,7 @@ type TClientCardProps = {
 }
 
 export const ClientCard: FC<TClientCardProps> = ({ id, fullname, email, organization }) => {
+  const [clientFullname, setClientFullname] = useState('')
   const [clientOrg, setClientOrg] = useState<number | null>(null)
   const [organizations, setOrganizations] = useState<TOrganization[]>([])
 
@@ -21,10 +22,8 @@ export const ClientCard: FC<TClientCardProps> = ({ id, fullname, email, organiza
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    setClientOrg(organization)
-  }, [organization])
-
+  useEffect(() => setClientOrg(organization), [organization])
+  useEffect(() => setClientFullname(fullname), [fullname])
 
   useEffect(() => {
     getOrganizationsApi()
@@ -46,7 +45,7 @@ export const ClientCard: FC<TClientCardProps> = ({ id, fullname, email, organiza
     // TODO try to try and catch errors to avoid errors in console
     e.preventDefault()
     console.log(id)
-    const res = await editClientApi(id, email, clientOrg)
+    const res = await editClientApi(id, clientFullname, email, clientOrg)
     if (res instanceof AxiosError) {
       setError(res)
     } else {
@@ -71,13 +70,12 @@ export const ClientCard: FC<TClientCardProps> = ({ id, fullname, email, organiza
             <InputField
               type='text'
               placeholder='Имя'
-              value={fullname}
-              onChange={() => { }}
+              value={clientFullname}
+              onChange={e => setClientFullname(e.target.value)}
               isRequired={true}
-              disabled
               variant='invisible-2xl' />
           </Form.Field>
-          <Form.Field name='fullname'>
+          <Form.Field name='email'>
             <InputField
               type='text'
               placeholder='Эл. почта'
