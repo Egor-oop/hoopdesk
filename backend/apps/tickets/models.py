@@ -17,6 +17,7 @@ class Ticket(models.Model):
     priority = models.IntegerField(choices=PRIORITY_CHOICES, default=3,
                                    null=False, blank=True)
     deadline = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True, null=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
