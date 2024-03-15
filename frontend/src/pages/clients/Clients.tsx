@@ -40,7 +40,13 @@ export const Clients = () => {
                 </AppButton>
               </div>
             </>
-            : <p>Клиентов не существует</p>}
+            :
+            <div className='flex justify-between items-end'>
+              <p className='text-2xl'>Клиентов не существует</p>
+              <AppButton type='button' onClick={() => navigate('new')}>
+                Добавить
+              </AppButton>
+            </div>}
         </>
       }
     </div>
