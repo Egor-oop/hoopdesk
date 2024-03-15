@@ -66,7 +66,7 @@ def create_new_messages(mail: imaplib.IMAP4_SSL) -> None:
                 'sender': sender,
                 'name': name,
                 'subject': subject,
-                'body': body
+                'body': len(body)
             }
             logger.info(f'Got new email:\n{new_email}')
             client = get_or_create_client(name, sender)
