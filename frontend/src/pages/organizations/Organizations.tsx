@@ -42,8 +42,8 @@ export const Organizations = () => {
               </div>
             </>
             :
-            <div className='flex justify-between items-end'>
-              <p className='text-2xl'>Организаций не существует</p>
+            <div className='text-center mr-64'>
+              <p className='text-2xl mt-20 mb-4'>Организаций не существует</p>
               <AppButton type='button' onClick={() => navigate('new')}>
                 Добавить
               </AppButton>
