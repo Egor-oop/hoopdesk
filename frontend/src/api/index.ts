@@ -14,6 +14,12 @@ import {
   editOrganizationApi,
   deleteOrganizationApi
 } from './organizations'
+import {
+  getTicketsApi,
+  getTicketApi,
+  editTicketApi,
+  deleteTicketApi
+} from './tickets'
 
 export {
   // auth
@@ -31,5 +37,10 @@ export {
   getOrganizationApi,
   createOrganizationApi,
   editOrganizationApi,
-  deleteOrganizationApi
+  deleteOrganizationApi,
+  // tickets
+  getTicketsApi,
+  getTicketApi,
+  editTicketApi,
+  deleteTicketApi,
 }

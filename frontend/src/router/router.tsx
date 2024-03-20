@@ -2,7 +2,7 @@ import { RouteObject, createBrowserRouter, Navigate } from 'react-router-dom'
 import {
   Login,
   Profile,
-  TaskList,
+  Tickets,
   Clients,
   Settings,
   ClientDetails,
@@ -31,11 +31,11 @@ const protectedRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <TaskList />
+        element: <Tickets />
       },
       {
         path: '/tickets',
-        element: <TaskList />
+        element: <Tickets />
       },
       {
         path: '/profile',

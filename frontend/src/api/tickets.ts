@@ -5,7 +5,7 @@ export const getTicketsApi = async (
   ordering: string = '-updated_at'
 ) => {
   const req = await axiosApi.get(
-    `/api/tickets/?page=${page}&ordering=${ordering}/`
+    `/api/tickets/?page=${page}&ordering=${ordering}`
   )
   return req
 }

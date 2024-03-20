@@ -11,8 +11,11 @@ import { SelectField } from './UI/SelectField'
 import { Pagination } from './UI/Pagination'
 import { ClientTable } from './client/ClientTable'
 import { OrganizationTable } from './organization/OrganizationTable'
+import { TicketsTable } from './tickets/TicketsTable'
 
 export {
+  // Tickets
+  TicketsTable,
   // Organization
   OrganizationCard,
   OrganizationTable,

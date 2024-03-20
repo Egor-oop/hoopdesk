@@ -23,6 +23,16 @@ type TOrganization = {
   email: string
 }
 
+type TTicket = {
+  id: number
+  title: string
+  reliable: TUserData | null
+  client: TClient
+  priority: number
+  deadline: string | null
+  is_active: boolean
+}
+
 type TSelectOption = {
   label: string
   value: string | number | null
