@@ -34,13 +34,10 @@ type TTicket = {
 }
 
 type TTicketRequest = {
-  id: number
-  title: string
+  priority: number,
+  deadline: string | null,
+  is_active: boolean,
   reliable: number | null
-  client: number
-  priority: number
-  deadline: string | null
-  is_active: boolean
 }
 
 type TSelectOption = {

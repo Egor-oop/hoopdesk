@@ -20,6 +20,7 @@ import {
   editTicketApi,
   deleteTicketApi
 } from './tickets'
+import { getUsersApi } from './users'
 
 export {
   // auth
@@ -43,4 +44,6 @@ export {
   getTicketApi,
   editTicketApi,
   deleteTicketApi,
+  // users
+  getUsersApi,
 }

@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { AppButton, DateTimeField, InputField, SelectField } from '..'
+import { TicketReliableSelect } from './TicketReliableSelect'
 
 interface ITicketCardProps {
   ticket: TTicket | null
@@ -7,15 +8,17 @@ interface ITicketCardProps {
 }
 
 export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
-  const [deadline, setDeadline] = useState<string | null>(null)
   const [priority, setPriority] = useState<number | null>(null)
+  const [deadline, setDeadline] = useState<string | null>(null)
   const [isActive, setIsActive] = useState<boolean>(false)
+  const [reliable, setReliable] = useState<number | null>(null)
 
   useEffect(() => {
     if (ticket?.deadline) setDeadline(new Date(ticket.deadline)
       .toISOString().slice(0, 16))
     if (ticket?.priority) setPriority(ticket.priority)
     if (ticket?.is_active) setIsActive(ticket.is_active)
+    if (ticket?.reliable) setReliable(ticket.reliable.id)
   }, [ticket])
 
   const priorityOptions = [
@@ -24,7 +27,13 @@ export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
     { label: 'Низкий', value: 3 }]
 
   const handleUpdate = () => {
-    console.log(`deadline: ${deadline}\npriority: ${priority}\nisActive: ${isActive}`)
+    const updatedData = {
+      priority: priority!,
+      is_active: isActive,
+      deadline,
+      reliable
+    }
+    updateTicket(updatedData)
   }
 
   return (
@@ -40,6 +49,15 @@ export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
               onChange={(e) => { }}
               variant='invisible-2xl'
               disabled />
+            <div className='flex gap-2 '>
+              <span className='font-medium'>Активна: </span>
+              <input
+                className='w-4'
+                type="checkbox"
+                checked={isActive}
+                onChange={() => setIsActive(!isActive)}
+              />
+            </div>
             <div className='flex justify-between gap-8'>
               <DateTimeField
                 value={deadline}
@@ -58,15 +76,10 @@ export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
               options={priorityOptions}
               onChange={(e) => { setPriority(parseInt(e.target.value)) }}
             />
-            <div className='flex gap-2 '>
-              <span className='font-medium'>Активен: </span>
-              <input
-                className='w-4'
-                type="checkbox"
-                checked={isActive}
-                onChange={() => setIsActive(!isActive)}
-              />
-            </div>
+            <TicketReliableSelect
+              value={reliable || null}
+              setReliable={setReliable}
+            />
           </div>
           <div className='flex gap-1'>
             <AppButton onClick={handleUpdate} type='button'>
