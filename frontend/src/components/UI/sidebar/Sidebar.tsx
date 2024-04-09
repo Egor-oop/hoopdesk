@@ -37,12 +37,20 @@ export const Sidebar = () => {
           <SidebarLink key={link.name} name={link.name} href={link.href} />
         ))}
       </div>
-      {history.state.idx !== 0 ?
-        <button
-          className='block px-2 py-2 rounded-sm font-medium hover:bg-gray-100'
-          onClick={() => navigate(-1)}>&larr;</button>
-        : null
-      }
+      <div className='flex gap-1'>
+        {history.state.idx !== 0 ?
+          <button
+            className='block px-2 py-2 rounded-sm font-medium hover:bg-gray-100 w-full'
+            onClick={() => navigate(-1)}>&larr;</button>
+          : null
+        }
+        {history.state.idx < history.length - 1 ?
+          <button
+            className='block px-2 py-2 rounded-sm font-medium hover:bg-gray-100 w-full'
+            onClick={() => navigate(1)}>&rarr;</button>
+          : null
+        }
+      </div>
     </div>
   )
 }
