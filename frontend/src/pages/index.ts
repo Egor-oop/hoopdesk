@@ -9,6 +9,7 @@ import { Settings } from "./Settings"
 import { Organizations } from "./organizations/Organizations"
 import { OrganizationDetails } from "./organizations/OrganizationDetails"
 import { OrganizationCreate } from "./organizations/OrganizationCreate"
+import { TicketView } from "./tickets/TicketView"
 
 export {
   Profile,
@@ -18,6 +19,7 @@ export {
   Login,
   // Tickets
   Tickets,
+  TicketView,
   // Clients
   Clients,
   ClientDetails,

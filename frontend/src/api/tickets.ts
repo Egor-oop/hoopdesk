@@ -16,11 +16,12 @@ export const getTicketApi = async (id: string | number) => {
 }
 
 export const editTicketApi = async (
+  // TODO: Optimize thise method to make a request only with provided arguments
   id: string | number,
   priority: number,
-  deadline: Date,
+  deadline: string | null,
   is_active: boolean,
-  reliable: number
+  reliable: number | null
 ) => {
   const req = await axiosApi.put(
     `/api/tickets/${id}/`,

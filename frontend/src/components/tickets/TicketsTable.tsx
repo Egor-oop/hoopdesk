@@ -10,15 +10,14 @@ export const TicketsTable: FC<TTicketsTableProps> = ({ tickets }) => {
 
   const convertDeadline = (deadline: string) => {
     const d = new Date(deadline)
-    
-    return `${d.getHours()}:${d.getMinutes()} ${d.getFullYear()}/${d.getDate()}/${d.getMonth()}`
+    return `${d.getHours()}:${d.getMinutes()} ${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
   }
 
   return (
     <table className='w-full'>
       <thead>
         <tr>
-          {['ID', 'Название', 'Клиент', 'Дэдлайн'].map((key) => (
+          {['ID', 'Название', 'Клиент', 'Дедлайн'].map((key) => (
             <td className='p-2 font-semibold' key={key}>{key}</td>
           ))}
         </tr>
@@ -27,7 +26,7 @@ export const TicketsTable: FC<TTicketsTableProps> = ({ tickets }) => {
         {tickets.map(ticket => (
           <tr
             className='border-y border-gray-200 hover:bg-gray-50 hover:cursor-pointer'
-            onClick={() => { navigate(`/organizations/${ticket.id}`) }}
+            onClick={() => { navigate(`/tickets/${ticket.id}`) }}
             key={ticket.id}
           >
             <td className='p-2'>{ticket.id || '-'}</td>

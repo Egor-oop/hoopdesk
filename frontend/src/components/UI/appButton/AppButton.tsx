@@ -12,7 +12,7 @@ export const AppButton: FC<TAppButtonProps> = ({ children, variant, type, onSubm
   return (
     <button
       className={
-        `px-5 py-3 rounded-sm text-sm font-medium  hover:cursor-pointer hover:underline ` +
+        `px-5 py-3 rounded-sm text-sm font-medium hover:cursor-pointer hover:underline ` +
         `${variant === 'standart' || variant === undefined ? 'bg-gray-900 text-slate-50 hover:bg-gray-800 active:bg-gray-950 ' : ''}` +
         `${variant === 'secondary' ? 'bg-opacity-0 text-gray-900 hover:bg-gray-100 active:bg-gray-200 ' : ''}`
       }

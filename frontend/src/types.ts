@@ -33,7 +33,17 @@ type TTicket = {
   is_active: boolean
 }
 
+type TTicketRequest = {
+  id: number
+  title: string
+  reliable: number | null
+  client: number
+  priority: number
+  deadline: string | null
+  is_active: boolean
+}
+
 type TSelectOption = {
   label: string
-  value: string | number | null
+  value: any
 }

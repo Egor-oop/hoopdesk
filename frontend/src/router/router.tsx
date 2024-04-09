@@ -9,7 +9,8 @@ import {
   Organizations,
   OrganizationDetails,
   OrganizationCreate,
-  ClientCreate
+  ClientCreate,
+  TicketView
 } from '../pages'
 import { useAuth } from '../lib'
 import App from '../App'
@@ -36,6 +37,10 @@ const protectedRoutes: RouteObject[] = [
       {
         path: '/tickets',
         element: <Tickets />
+      },
+      {
+        path: '/tickets/:id',
+        element: <TicketView />
       },
       {
         path: '/profile',

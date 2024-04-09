@@ -12,10 +12,15 @@ import { Pagination } from './UI/Pagination'
 import { ClientTable } from './client/ClientTable'
 import { OrganizationTable } from './organization/OrganizationTable'
 import { TicketsTable } from './tickets/TicketsTable'
+import { TicketDetails } from './tickets/TicketDetails'
+import { TicketDialog } from './tickets/TicketDialog'
+import { DateTimeField } from './UI/DateTimeField'
 
 export {
   // Tickets
   TicketsTable,
+  TicketDetails,
+  TicketDialog,
   // Organization
   OrganizationCard,
   OrganizationTable,
@@ -30,7 +35,8 @@ export {
   AppButton,
   Sidebar,
   Avatar,
+  Pagination,
   SelectField,
   InputField,
-  Pagination,
+  DateTimeField,
 }
