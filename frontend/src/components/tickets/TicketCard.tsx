@@ -5,9 +5,12 @@ import { TicketReliableSelect } from './TicketReliableSelect'
 interface ITicketCardProps {
   ticket: TTicket | null
   updateTicket: (updatedTicket: TTicketRequest) => void
+  handleDelete: () => void
 }
 
-export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
+export const TicketCard: FC<ITicketCardProps> = ({
+  ticket, updateTicket, handleDelete
+}) => {
   const [priority, setPriority] = useState<number | null>(null)
   const [deadline, setDeadline] = useState<string | null>(null)
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -84,6 +87,9 @@ export const TicketCard: FC<ITicketCardProps> = ({ ticket, updateTicket }) => {
           <div className='flex gap-1'>
             <AppButton onClick={handleUpdate} type='button'>
               Сохранить
+            </AppButton>
+            <AppButton type='button' onClick={handleDelete} variant='secondary'>
+              Удалить
             </AppButton>
           </div>
         </>

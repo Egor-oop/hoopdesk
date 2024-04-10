@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
-import { editTicketApi, getTicketApi } from '../../api'
+import { deleteTicketApi, editTicketApi, getTicketApi } from '../../api'
 import { TicketCard } from './TicketCard'
 
 export const TicketDetails: FC = () => {
@@ -20,10 +20,10 @@ export const TicketDetails: FC = () => {
     setLoading(false)
   }, [])
 
-  const updateTicket = async (
+  const updateTicket = (
     updatedTicket: TTicketRequest
   ) => {
-    await editTicketApi(id!,
+    editTicketApi(id!,
       updatedTicket.priority,
       updatedTicket.deadline,
       updatedTicket.is_active,
@@ -38,14 +38,19 @@ export const TicketDetails: FC = () => {
           setError(err.message)
         }
       })
+  }
 
+  const deleteTicket = () => {
+    deleteTicketApi(id!)
+      .then(res => navigate('/tickets'))
+      .catch(err => console.error(err))
   }
 
   return (
     <div className='flex-auto'>
       {loading
         ? 'Загрузка'
-        : <TicketCard ticket={ticket} updateTicket={updateTicket} />}
+        : <TicketCard ticket={ticket} updateTicket={updateTicket} handleDelete={deleteTicket} />}
     </div>
   )
 }
