@@ -15,6 +15,7 @@ import { TicketsTable } from './tickets/TicketsTable'
 import { TicketDetails } from './tickets/TicketDetails'
 import { TicketDialog } from './tickets/TicketDialog'
 import { DateTimeField } from './UI/DateTimeField'
+import { Toast } from './UI/Toast'
 
 export {
   // Tickets
@@ -39,4 +40,5 @@ export {
   SelectField,
   InputField,
   DateTimeField,
+  Toast,
 }

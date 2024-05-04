@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@radix-ui/react-form": "^0.0.3",
+    "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/themes": "^2.0.2",
     "axios": "^1.6.2",
+    "clsx": "^2.1.0",
     "jwt-decode": "^4.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

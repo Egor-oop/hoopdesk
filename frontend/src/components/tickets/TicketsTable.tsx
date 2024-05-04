@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 type TTicketsTableProps = {
@@ -15,9 +15,10 @@ export const TicketsTable: FC<TTicketsTableProps> = ({ tickets }) => {
 
   return (
     <table className='w-full'>
+      {/* <AppToast /> */}
       <thead>
         <tr>
-          {['ID', 'Название', 'Клиент', 'Дедлайн'].map((key) => (
+          {['ID', 'Название', 'Клиент', 'Статус', 'Дедлайн'].map((key) => (
             <td className='p-2 font-semibold' key={key}>{key}</td>
           ))}
         </tr>
@@ -30,9 +31,10 @@ export const TicketsTable: FC<TTicketsTableProps> = ({ tickets }) => {
             key={ticket.id}
           >
             <td className='p-2'>{ticket.id || '-'}</td>
-            <td className='p-2'>{ticket.title || '-'}</td>
-            <td className='p-2'>{ticket.client.full_name || '-'}</td>
-            <td className='p-2'>
+            <td className='p-2 w-1/2'>{ticket.title || '-'}</td>
+            <td className='p-2 w-3/12'>{ticket.client.full_name || '-'}</td>
+            <td className='p-2 w-[13%]'>{ticket.is_active ? 'Активен' : 'Неактивен'}</td>
+            <td className='p-2 w-[12%]'>
               {ticket.deadline ?
                 convertDeadline(ticket.deadline) : '-'
               }
