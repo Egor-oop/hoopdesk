@@ -18,9 +18,9 @@ from apps.clients.views import (
     ClientViewSet
 )
 from apps.tickets.views import TicketViewSet
-from apps.messagesapp.views import SendMessageAPIView
+from apps.messagesapp.views import SendMessageAPIView, MailMessageViewSet
+from apps.messagesapp.consumers import MailMessageConsumer
 
-from django.urls import re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -40,6 +40,7 @@ router.register('users', UserViewSet)
 router.register('organizations', OrganizationViewSet)
 router.register('clients', ClientViewSet)
 router.register('tickets', TicketViewSet)
+router.register('mailmessages', MailMessageViewSet)
 
 urlpatterns = [
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
