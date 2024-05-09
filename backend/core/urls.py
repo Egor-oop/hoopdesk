@@ -19,7 +19,6 @@ from apps.clients.views import (
 )
 from apps.tickets.views import TicketViewSet
 from apps.messagesapp.views import SendMessageAPIView, MailMessageViewSet
-from apps.messagesapp.consumers import MailMessageConsumer
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view

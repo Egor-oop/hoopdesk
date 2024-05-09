@@ -2,6 +2,8 @@ import logging
 import imaplib
 import email
 from email.header import decode_header
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
 from .models import MailMessage
 from apps.tickets.models import Ticket
@@ -21,6 +23,7 @@ def connect_to_email_server(host: str, user: str, password: str) -> imaplib.IMAP
 def create_mail_message(ticket: Ticket, from_client: Client, content: str):
     new_mail_message = MailMessage(from_client=from_client, content=content,
                                    ticket=ticket, from_employee=None)
+
     new_mail_message.save()
     return new_mail_message
 
@@ -62,16 +65,21 @@ def create_new_messages(mail: imaplib.IMAP4_SSL) -> None:
             body = body.decode(
                 encoding or "utf-8") if isinstance(body, bytes) else body
 
-            new_email = {
-                'sender': sender,
-                'name': name,
-                'subject': subject,
-                'body': len(body)
-            }
-            logger.info(f'Got new email:\n{new_email}')
             client = get_or_create_client(name, sender)
             ticket, is_created = get_or_create_ticket(subject, client)
             if is_created:
                 logger.info(f'Created new ticket:\n{ticket.id, ticket.title, ticket.client}')
             mail_message = create_mail_message(ticket, client, body)
+
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(
+                f'ticket_{mail_message.ticket.id}',
+                {
+                    'type': 'new.message',
+                    'message': {
+                        'ticket': mail_message.ticket.id
+                    }
+                }
+            )
+
             logger.info(f'New mail message:\n{mail_message.id, mail_message.from_client, mail_message.ticket.title}')
