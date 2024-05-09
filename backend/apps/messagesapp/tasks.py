@@ -28,6 +28,6 @@ def send_email(to_email, subject, content):
         subject,
         content,
         settings.EMAIL_HOST_USER,
+        [to_email],
         fail_silently=True,
-        reply_to=[to_email],
     )
