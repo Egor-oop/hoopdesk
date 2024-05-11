@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { getMailMessages } from '../../api'
+import { getMailMessages, sendMailMessage } from '../../api'
 import { InputField } from '..'
 import { AppButton } from '..'
 import { Message } from './Message'
@@ -70,8 +70,19 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
     }
   }
 
+  const handleSendMessage = () => {
+    sendMailMessage(ticketId, message)
+      .then(res => {
+        getNewMessages()
+        setMessage('')
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   return (
-    <div className='basis-7/12 flex gap-2 flex-col min-h-screen max-h-screen overflow-hidden'>
+    <div className='basis-7/12 flex gap-2 flex-col min-h-screen max-h-screen'>
       <div onScroll={handleScroll}
         className='flex overflow-y-scroll flex-1 flex-col-reverse gap-3 w-full pr-4'>
         {messages.map(message => (
@@ -92,7 +103,7 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
           value={message}
           onChange={e => { setMessage(e.target.value) }}
           variant='standart' />
-        <AppButton>Отправить</AppButton>
+        <AppButton onClick={handleSendMessage} type='button'>Отправить</AppButton>
       </div>
     </div>
   )
