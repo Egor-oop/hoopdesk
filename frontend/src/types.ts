@@ -44,3 +44,12 @@ type TSelectOption = {
   label: string
   value: any
 }
+
+type TMailMessage = {
+  id: number
+  ticket: TTicket
+  content: string
+  created_at: string
+  from_client: number | null
+  from_employee: number | null
+}

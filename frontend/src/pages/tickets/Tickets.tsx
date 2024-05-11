@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { AppButton, Pagination, TicketsTable } from "../../components"
+import { Pagination, TicketsTable } from "../../components"
 import { getTicketsApi } from "../../api"
 
 export const Tickets = () => {
@@ -9,6 +9,7 @@ export const Tickets = () => {
   const [count, setCount] = useState<number>(0)
 
   useEffect(() => {
+    setLoading(true)
     getTicketsApi(currentPage)
       .then(res => {
         if (res.data.results[0]) {
@@ -17,6 +18,7 @@ export const Tickets = () => {
         }
       })
       .catch(err => err)
+    setLoading(false)
   }, [currentPage])
 
   return (

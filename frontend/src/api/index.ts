@@ -21,6 +21,7 @@ import {
   deleteTicketApi
 } from './tickets'
 import { getUsersApi } from './users'
+import { getMailMessages, sendMailMessage } from './mailMessages'
 
 export {
   // auth
@@ -46,4 +47,7 @@ export {
   deleteTicketApi,
   // users
   getUsersApi,
+  // mail messages
+  getMailMessages,
+  sendMailMessage
 }

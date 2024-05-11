@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from .models import MailMessage
-from apps.tickets.serializers import TicketSerializer
+from apps.tickets.serializers import TicketSerializerRead
 
 
 class MailMessageSerializer(ModelSerializer):
@@ -10,7 +10,7 @@ class MailMessageSerializer(ModelSerializer):
 
 
 class MailMessageSerializerRead(ModelSerializer):
-    ticket = TicketSerializer(many=False, read_only=True)
+    ticket = TicketSerializerRead(many=False, read_only=True)
 
     class Meta:
         model = MailMessage

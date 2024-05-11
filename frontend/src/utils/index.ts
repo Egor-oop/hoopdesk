@@ -1,3 +1,4 @@
 import storage from "./storage";
+import date from "./date";
 
-export {storage}
+export {storage, date}
