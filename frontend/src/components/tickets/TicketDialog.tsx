@@ -62,7 +62,8 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
 
   const handleScroll = (e: any) => {
     const { scrollTop, scrollHeight, offsetHeight } = e.target
-    if (scrollTop + scrollHeight === offsetHeight) {
+    console.log(scrollTop, scrollHeight, offsetHeight)
+    if (scrollTop + scrollHeight - 1 <= offsetHeight) {
       console.log("DAAAAAMN!!!!")
       if (page < maxPage) {
         setPage(prev => prev + 1)
@@ -82,7 +83,7 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
   }
 
   return (
-    <div className='basis-7/12 flex gap-2 flex-col min-h-screen max-h-screen'>
+    <div className='basis-7/12 flex gap-2 flex-col min-h-[97vh] max-h-[97vh]'>
       <div onScroll={handleScroll}
         className='flex overflow-y-scroll flex-1 flex-col-reverse gap-3 w-full pr-4'>
         {messages.map(message => (
