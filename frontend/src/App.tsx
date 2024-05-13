@@ -6,7 +6,7 @@ function App() {
   return (
     <div className='text-slate-950'>
       <Sidebar />
-      <main className='p-3 ml-64'>
+      <main className='md:p-3 p-1 md:ml-64'>
         <div className='mx-auto w-auto block'>
           <Outlet />
         </div>

@@ -14,6 +14,14 @@ import {
   editOrganizationApi,
   deleteOrganizationApi
 } from './organizations'
+import {
+  getTicketsApi,
+  getTicketApi,
+  editTicketApi,
+  deleteTicketApi
+} from './tickets'
+import { getUsersApi } from './users'
+import { getMailMessages, sendMailMessage } from './mailMessages'
 
 export {
   // auth
@@ -31,5 +39,15 @@ export {
   getOrganizationApi,
   createOrganizationApi,
   editOrganizationApi,
-  deleteOrganizationApi
+  deleteOrganizationApi,
+  // tickets
+  getTicketsApi,
+  getTicketApi,
+  editTicketApi,
+  deleteTicketApi,
+  // users
+  getUsersApi,
+  // mail messages
+  getMailMessages,
+  sendMailMessage
 }

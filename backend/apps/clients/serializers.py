@@ -15,10 +15,12 @@ class ClientSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class ClientSerializerOrganizationName(ModelSerializer):
+class ClientSerializerRead(ModelSerializer):
+    organization = OrganizationSerializer(many=False, read_only=True)
+    
     class Meta:
         model = Client
-        fields = ('id', 'full_name', 'email', 'updated_at')
+        fields = '__all__'
 
     def to_representation(self, instance):
         response = super().to_representation(instance)

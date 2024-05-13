@@ -18,7 +18,7 @@ export const ClientDetails = () => {
       .then(res => {
         setFullname(res.data?.full_name ?? '')
         setEmail(res.data?.email ?? '')
-        setOrganization(res.data?.organization)
+        setOrganization(res.data?.organization?.id)
       })
       .catch(() => navigate('/'))
     setLoading(false)
@@ -31,8 +31,8 @@ export const ClientDetails = () => {
         :
         <>
           {true
-          ? <ClientCard id={id!} fullname={fullname} email={email} organization={organization} />
-          : ''}
+            ? <ClientCard id={id!} fullname={fullname} email={email} organization={organization} />
+            : ''}
         </>}
     </>
   )

@@ -29,12 +29,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
 
     # installed apps
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
     # created apps
     'apps.accounts',
@@ -42,6 +44,17 @@ INSTALLED_APPS = [
     'apps.tickets',
     'apps.messagesapp',
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',  # Use Redis as the channel layer backend
+        'CONFIG': {
+            'hosts': [('redis', 6379)],  # Adjust the host and port as per your Redis configuration
+        },
+    },
+}
+
+ASGI_APPLICATION = 'core.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,7 +130,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -133,7 +145,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'PAGE_SIZE': 15
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 15,
+    'DEFAULT_FILTER_BACKENDS': ['rest_framework.filters.OrderingFilter'],
 }
 
 SIMPLE_JWT = {
@@ -185,7 +199,8 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 CELERY_BROKER_URL = environ.get('CELERY_BROKER_URL', 'redis://redis:6379/0')
-CELERY_RESULT_BACKEND = environ.get('CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = environ.get(
+    'CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
 CELERY_IMPORTS = ('apps.messagesapp.tasks',)
 
 CELERY_BEAT_SCHEDULE = {

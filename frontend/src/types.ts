@@ -23,7 +23,33 @@ type TOrganization = {
   email: string
 }
 
+type TTicket = {
+  id: number
+  title: string
+  reliable: TUserData | null
+  client: TClient
+  priority: number
+  deadline: string | null
+  is_active: boolean
+}
+
+type TTicketRequest = {
+  priority: number,
+  deadline: string | null,
+  is_active: boolean,
+  reliable: number | null
+}
+
 type TSelectOption = {
   label: string
-  value: string | number | null
+  value: any
+}
+
+type TMailMessage = {
+  id: number
+  ticket: TTicket
+  content: string
+  created_at: string
+  from_client: number | null
+  from_employee: number | null
 }

@@ -1,6 +1,6 @@
 import { Signup } from "./auth/Signup"
 import { Login } from "./auth/Login"
-import { TaskList } from "./tasks/TaskList"
+import { Tickets } from "./tickets/Tickets"
 import { Clients } from "./clients/Clients"
 import { ClientDetails } from "./clients/ClientDetails"
 import { ClientCreate } from "./clients/ClientCreate"
@@ -9,17 +9,23 @@ import { Settings } from "./Settings"
 import { Organizations } from "./organizations/Organizations"
 import { OrganizationDetails } from "./organizations/OrganizationDetails"
 import { OrganizationCreate } from "./organizations/OrganizationCreate"
+import { TicketView } from "./tickets/TicketView"
 
 export {
+  Profile,
+  Settings,
+  // Auth
   Signup,
   Login,
-  TaskList,
-  Profile,
+  // Tickets
+  Tickets,
+  TicketView,
+  // Clients
   Clients,
-  Settings,
   ClientDetails,
   ClientCreate,
+  // Organizations
   Organizations,
   OrganizationDetails,
-  OrganizationCreate
+  OrganizationCreate,
 }

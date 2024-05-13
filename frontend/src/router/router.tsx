@@ -2,14 +2,15 @@ import { RouteObject, createBrowserRouter, Navigate } from 'react-router-dom'
 import {
   Login,
   Profile,
-  TaskList,
+  Tickets,
   Clients,
   Settings,
   ClientDetails,
   Organizations,
   OrganizationDetails,
   OrganizationCreate,
-  ClientCreate
+  ClientCreate,
+  TicketView
 } from '../pages'
 import { useAuth } from '../lib'
 import App from '../App'
@@ -31,11 +32,15 @@ const protectedRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <TaskList />
+        element: <Tickets />
       },
       {
         path: '/tickets',
-        element: <TaskList />
+        element: <Tickets />
+      },
+      {
+        path: '/tickets/:id',
+        element: <TicketView />
       },
       {
         path: '/profile',

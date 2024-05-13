@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AppButton, OrganizationTable, Pagination} from '../../components'
+import { AppButton, OrganizationTable, Pagination } from '../../components'
 import { getOrganizationsApi } from '../../api'
 import { useNavigate } from 'react-router-dom'
 
@@ -41,7 +41,13 @@ export const Organizations = () => {
                 </AppButton>
               </div>
             </>
-            : <p>Организаций не существует</p>}
+            :
+            <div className='text-center mr-64'>
+              <p className='text-2xl mt-20 mb-4'>Организаций не существует</p>
+              <AppButton type='button' onClick={() => navigate('new')}>
+                Добавить
+              </AppButton>
+            </div>}
         </>
       }
     </div>
