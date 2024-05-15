@@ -1,13 +1,15 @@
-import { Box } from '@radix-ui/themes'
 import { SidebarLink } from './SidebarLink'
 import { SidebarProfile } from './SidebarProfile'
 import { useEffect, useState } from 'react'
 import { userMeApi } from '../../../api'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../../../state/user/userSlice'
 
 export const Sidebar = () => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState<TUserData>()
+  const dispatch = useDispatch()
 
   const links = [
     { name: 'Панель управления', href: '/' },
@@ -20,6 +22,7 @@ export const Sidebar = () => {
   useEffect(() => {
     userMeApi()
       .then(res => {
+        dispatch(loginUser(res.data))
         setUserData(res.data)
       })
       .catch(err => err)

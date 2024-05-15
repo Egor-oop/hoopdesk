@@ -62,9 +62,7 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
 
   const handleScroll = (e: any) => {
     const { scrollTop, scrollHeight, offsetHeight } = e.target
-    console.log(scrollTop, scrollHeight, offsetHeight)
     if (scrollTop + scrollHeight - 1 <= offsetHeight) {
-      console.log("DAAAAAMN!!!!")
       if (page < maxPage) {
         setPage(prev => prev + 1)
       }
@@ -92,7 +90,6 @@ export const TicketDialog: FC<ITicketDialogProps> = ({ ticketId }) => {
             content={message.content}
             created_at={message.created_at}
             from_client={message.from_client}
-            from_employee={message.from_employee}
             ticket={message.ticket}
           />
         ))}

@@ -1,13 +1,10 @@
 import { axiosApi } from "../lib"
 
 export const userLoginApi = async (username: string, password: string) => {
-  const req = await axiosApi.post('/api/login/', {
+  return await axiosApi.post('/api/login/', {
     username: username,
     password: password
-  }).catch(err => {
-    return err
   })
-  return req
 }
 
 export const userRegisterApi = (

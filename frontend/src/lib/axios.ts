@@ -22,10 +22,10 @@ axiosApi.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
       const refreshToken = storage.getToken().refresh
+      if (!refreshToken) return Promise.reject(error)
       const newTokens = await axiosApi.post('/api/token/refresh/', {refresh: refreshToken})
       storage.setToken(newTokens.data.access, newTokens.data.refresh)
       axiosApi.defaults.headers.common['Authorization'] = `Bearer ${newTokens.data.refresh}`
-      console.log(newTokens)
       return axiosApi(originalRequest)
     }
     return Promise.reject(error)
