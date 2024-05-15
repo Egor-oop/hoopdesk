@@ -1,5 +1,3 @@
-import { Text } from '@radix-ui/themes'
-import { Avatar } from '../Avatar'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -18,7 +16,6 @@ export const SidebarProfile: FC<TSidebarProfileProps> = ({
         className='block px-2 py-1 rounded-t-sm font-medium hover:bg-gray-100'
         to='/profile'
       >
-        {/* <Avatar fallback={`${firstName.charAt(0)}${lastName.charAt(0)}`} /> */}
         <span className='block text-xl'>{firstName} {lastName}</span>
         <span className='text-slate-600'>{username}</span>
       </Link>
